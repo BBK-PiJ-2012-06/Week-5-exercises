@@ -1,11 +1,11 @@
 public class MockLibraryImp implements Library {
 	@Override
-	String getName() {
+	public String getName() {
 		return "Mock library";
 	}
 	
 	@Override
-	int getID(String str) {
+	public int getID(String str) {
 		return 13;
 	}
 }
