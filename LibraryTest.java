@@ -26,4 +26,14 @@ public class LibraryTest {
 		lib.setMaxBooksPerUser(-13);
 		assertEquals(10, lib.getMaxBooksPerUser());
 	}
+	@Test
+	public void testsGetID() {
+		String ac = "Alice Cooper";
+		lib.getID(ac);
+		assertEquals(0, lib.getID(ac));
+		
+		String oo = "Ozzy Osbourne";
+		lib.getID(oo);
+		assertEquals(1, lib.getID(oo));
+	}
 }

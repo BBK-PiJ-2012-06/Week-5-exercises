@@ -1,7 +1,12 @@
+import java.util.Map;
+import java.util.HashMap;
+
 public class LibraryImp implements Library {
 	private final String NAME;
 	private static final int DEFAULT_MAX_BPU = 10;
 	private int maxBooksPerUser;
+	private Map<String, Integer> user_map = new HashMap<String, Integer>();
+	private int nextID = 0;
 	
 	public LibraryImp(String name) {
 		this.NAME = name;
@@ -12,8 +17,6 @@ public class LibraryImp implements Library {
 	public String getName() {
 		return NAME;
 	}
-	
-	//int getID(String username);
 	
 	@Override
 	public int getMaxBooksPerUser() {
@@ -28,6 +31,9 @@ public class LibraryImp implements Library {
 	
 	@Override
 	public int getID(String username) {
-		return 13;
+		if( user_map.containsKey(username) )
+			return user_map.get(username);
+		user_map.put(username, nextID);
+		return nextID++;
 	}
 }
