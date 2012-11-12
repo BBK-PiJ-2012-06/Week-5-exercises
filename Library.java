@@ -34,5 +34,11 @@ public interface Library {
 	 */
 	void setMaxBooksPerUser(int new_max_bpu);
 	
-	
+	/**
+	 * Adds a new book to the list of books in this library.
+	 *
+	 * @param title - the title of the book to be added
+	 * @param author - the author of the book to be added
+	 */
+	void addBook(String title, String author);
 }

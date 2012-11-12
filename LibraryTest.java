@@ -4,7 +4,7 @@ public class LibraryTest {
 	Library lib;
 	@Before
 	public void buildUp() {
-		lib = new LibraryImp("Test library");
+		lib = new MockLibraryImp("Test library");		
 	}
 	@After
 	public void cleanUp() {
@@ -35,5 +35,19 @@ public class LibraryTest {
 		String oo = "Ozzy Osbourne";
 		lib.getID(oo);
 		assertEquals(1, lib.getID(oo));
+	}
+	@Test
+	public void testsBookInteractions() {
+		String author = "Kurt Vonnegut";
+		String title = "Cat's Cradle";
+		lib.addBook(author, title);
+		Book takenBook = lib.takeBook(title);
+		Book nullBook = lib.takeBook(title);
+		assertEquals(author, takenBook.getAuthor());
+		assertEquals(title, takenBook.getTitle());
+		assertNull(nullBook);
+		
+		lib.returnBook(takenBook);
+		assertNotNull(lib.takeBook(title));
 	}
 }

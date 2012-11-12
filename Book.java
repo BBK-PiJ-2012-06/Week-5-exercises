@@ -6,12 +6,13 @@
 
 
 public class Book {
-	private final String author;
-	private final String title;
+	private final String AUTHOR, TITLE;
+	private boolean isTaken;
 	
 	public Book(String author, String title) {
-		this.author = author;
-		this.title = title;
+		this.AUTHOR = author;
+		this.TITLE = title;
+		isTaken = false;
 	}
 	
 	/**
@@ -19,7 +20,7 @@ public class Book {
 	 * @return author the author of the book.
 	 */
 	public String getAuthor() {
-		return author;
+		return AUTHOR;
 	}
 	
 	/**
@@ -27,6 +28,22 @@ public class Book {
 	 * @return title the title of the book.
 	 */
 	public String getTitle() {
-		return title;
+		return TITLE;
+	}
+	
+	/**
+	 * Returns this book's status in a library.
+	 * @return true if book is taken from the library, false if available.
+	 */
+	public boolean isTaken() {
+		return isTaken;
+	}
+	
+	/**
+	 * Sets this book's status in a library.
+	 * @param the status to be set.
+	 */
+	public void setTaken(boolean taken) {
+		isTaken = taken;
 	}
 }
