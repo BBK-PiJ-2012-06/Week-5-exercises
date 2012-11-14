@@ -1,19 +1,23 @@
 /**
  * The User class represents a user of a library. Each has to have a 
- * unique name and ID number.
+ * unique name and ID number, plus a list of books they are currently borrowing.
  * These user's name is set on construction, the ID number later. 
- * Use getters getName(), getID(), and setID(int id) for access.
+ * Use methods getName(), getID(), setID(int id), getBooksBorrowed(), borrows(Book bk) for access.
  */
 
+import java.util.List;
+import java.util.LinkedList;
 
 public class User {
-	private final String name;
+	private final String NAME;
 	private int id = -1;
 	private Library lib;
+	private List<Book> borrowed;
 	
 	public User(String name) {
-		this.name = name;
+		this.NAME = name;
 		lib = null;
+		borrowed = new LinkedList<Book>();
 	}
 	
 	/**
@@ -21,7 +25,7 @@ public class User {
 	 * @return name the name of the user.
 	 */
 	public String getName() {
-		return name;
+		return NAME;
 	}
 	
 	/**
@@ -58,5 +62,32 @@ public class User {
 	 */
 	public Library getLibrary() {
 		return lib;
+	}
+	
+	/**
+	 * Returns a list of books currently borrowed by the user.
+	 * @return the list of books borrowed.
+	 */
+	public List<Book> getBooksBorrowed() {
+		return borrowed;
+	}
+	
+	/**
+	 * Adds a book to the list of books borrowed by the user.
+	 * @param the book being borrowed.
+	 */
+	public void borrows(Book bk) {
+		if(bk == null)
+			return;
+		borrowed.add(bk);
+	}
+	
+	/**
+	 * Removes a book from the list of books borrowed.
+	 * @param the book to return to the library.
+	 */
+	public void returns(Book bk) {
+		if(borrowed.contains(bk))
+			borrowed.remove(bk);
 	}
 }

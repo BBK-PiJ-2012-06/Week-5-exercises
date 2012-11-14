@@ -27,9 +27,23 @@ public class UserTest {
 	}
 	@Test
 	public void testsRegistration() {
-		Library lib = new MockLibraryImp();
+		Library lib = new LibraryImp("Test library");
 		user.register(lib);
-		assertEquals("Mock library", user.getLibrary().getName());
-		assertEquals(13, user.getID());		
+		assertEquals("Test library", user.getLibrary().getName());
+		assertEquals(0, user.getID());		
+	}
+	@Test
+	public void testsBorrowing() {
+		Book book = new Book("author", "title");
+		assertEquals(0, user.getBooksBorrowed().size());
+		assertNull(user.getBooksBorrowed().peek());
+		
+		user.borrows(book);
+		assertEquals(1, user.getBooksBorrowed().size());
+		assertSame(book, user.getBooksBorrowed().peek());
+		
+		user.returns(book);
+		assertEquals(0, user.getBooksBorrowed().size());
+		assertNull(user.getBooksBorrowed().peek());
 	}
 }
