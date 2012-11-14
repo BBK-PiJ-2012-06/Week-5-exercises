@@ -13,6 +13,7 @@ public class Book {
 		this.AUTHOR = author;
 		this.TITLE = title;
 		isTaken = false;
+		User reader = null;
 	}
 	
 	/**
@@ -40,10 +41,27 @@ public class Book {
 	}
 	
 	/**
-	 * Sets this book's status in a library.
-	 * @param the status to be set.
+	 * Sets this book to be taken by the given user.
+	 * @param the user taking the book.
 	 */
-	public void setTaken(boolean taken) {
-		isTaken = taken;
+	public void setTakenBy(User user) {
+		isTaken = true;
+		reader = user;
+	}
+	
+	/**
+	 * Sets this book to be returned.
+	 */
+	public void setReturned() {
+		isTaken = false;
+		reader = null;
+	}
+	
+	/**
+	 * Returns the user reading this book.
+	 * @return the reading user.
+	 */
+	public User getReader() {
+		return reader;
 	}
 }

@@ -12,7 +12,7 @@ public class User {
 	private final String NAME;
 	private int id = -1;
 	private Library lib;
-	private List<Book> borrowed;
+	private LinkedList<Book> borrowed;
 	
 	public User(String name) {
 		this.NAME = name;
@@ -53,7 +53,7 @@ public class User {
 	 */
 	public void register(Library lib) {
 		this.lib = lib;
-		id = lib.getID(name);
+		id = lib.getID(NAME);
 	}
 	
 	/**
@@ -68,7 +68,7 @@ public class User {
 	 * Returns a list of books currently borrowed by the user.
 	 * @return the list of books borrowed.
 	 */
-	public List<Book> getBooksBorrowed() {
+	public LinkedList<Book> getBooksBorrowed() {
 		return borrowed;
 	}
 	
