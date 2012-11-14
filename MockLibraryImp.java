@@ -41,4 +41,16 @@ public class MockLibraryImp implements Library {
 	public void returnBook(Book book) {
 		taken = false;
 	}
+	@Override
+	public int getReaderCount() {
+		return 1;
+	}
+	@Override
+	public int getBookCount() {
+		return 2;
+	}
+	@Override
+	public int getBookBorrowedCount() {
+		return 3;
+	}
 }

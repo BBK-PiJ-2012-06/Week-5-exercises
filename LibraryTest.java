@@ -4,7 +4,7 @@ public class LibraryTest {
 	Library lib;
 	@Before
 	public void buildUp() {
-		lib = new MockLibraryImp("Test library");		
+		lib = new LibraryImp("Test library");		
 	}
 	@After
 	public void cleanUp() {
@@ -49,5 +49,11 @@ public class LibraryTest {
 		
 		lib.returnBook(takenBook);
 		assertNotNull(lib.takeBook(title));
+	}
+	@Test
+	public void testsCounters() {
+		assertEquals(1, lib.getReaderCount());
+		assertEquals(2, lib.getBookCount());
+		assertEquals(3, lib.getBookBorrowedCount());
 	}
 }

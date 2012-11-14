@@ -63,7 +63,7 @@ public class LibraryImp implements Library {
 		
 		for(Book testBook : booksRequested) {
 			if(!testBook.isTaken()) {
-				testBook.setTaken(true);
+				testBook.setTaken();
 				return testBook;
 			}
 		}
@@ -73,12 +73,12 @@ public class LibraryImp implements Library {
 	
 	@Override
 	public void returnBook(Book book) {
-		List<Book> books_with_this_title = bookMap.get(title);
+		List<Book> books_with_this_title = bookMap.get(book.getTitle());
 		book.setReturned();
 		
 		// If the library doesn't have the book, it'll take it as a dontation...
 		if(books_with_this_title == null) {
-			books_with_this_title = new LinkedList<Book>;
+			books_with_this_title = new LinkedList<Book>();
 			books_with_this_title.add(book);
 			bookMap.put(book.getTitle(), books_with_this_title);
 		} else {
@@ -89,5 +89,38 @@ public class LibraryImp implements Library {
 			}
 			books_with_this_title.add(book);
 		}
+	}
+	
+	@Override
+	public int getReaderCount() {
+		return userMap.size();
+	}
+	
+	@Override
+	public int getBookCount() {
+		int bookCount = 0;
+		if(bookMap.size() == 0) {
+			return 0;
+		}
+		for(List currentTitle : bookMap.values()) {
+			bookCount += currentTitle.size();
+		}
+		return bookCount;
+	}
+	 
+	@Override
+	public int getBookBorrowedCount() {
+		int borrowedCount = 0;
+		if(bookMap.size() == 0) {
+			return 0;
+		}
+		for(List currentTitle : bookMap.values()) {
+			for(Book currentBk : currentTitle) {
+				if(currentBk.isTaken()) {
+					borrowedCount++
+				}
+			}
+		}
+		return borrowedCount;
 	}
 }

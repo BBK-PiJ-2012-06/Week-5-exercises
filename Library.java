@@ -37,8 +37,45 @@ public interface Library {
 	/**
 	 * Adds a new book to the list of books in this library.
 	 *
-	 * @param title - the title of the book to be added
 	 * @param author - the author of the book to be added
+	 * @param title - the title of the book to be added
 	 */
-	void addBook(String title, String author);
+	void addBook(String author, String title);
+	
+	/**
+	 * If the book is not taken, marks the book as taken and returns it.
+	 * If the book is taken, null is returned.
+	 *
+	 * @param the title of the book to be taken
+	 * @return the book, if not already taken; null otherwise
+	 */
+	Book takeBook(String title);
+	 
+	/**
+	 * Returns the book to the library, marking it as not taken.
+	 *
+	 * @param the book to return
+	 */
+	void returnBook(Book book);
+	  
+	/**
+	 * Returns the number of users registered in this library.
+	 *
+	 * @return the number of readers
+	 */
+	int getReaderCount();
+	
+	/**
+	 * Returns the number of books in this library.
+	 *
+	 * @return the number of books
+	 */
+	 int getBookCount();
+	 
+	 /**
+	  * Returns the number of borrowed books in this library.
+	  *
+	  * @return the number of borrowed books
+	  */
+	  int getBookBorrowedCount();
 }
