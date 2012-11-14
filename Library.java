@@ -1,4 +1,5 @@
 import java.util.Set;
+import java.util.List;
 
 public interface Library {
 	/**
@@ -27,12 +28,12 @@ public interface Library {
 	/**
 	 * Sets the maximum number of books a user can have from the Library
 	 * at one time.
-	 * For nonsensical input (less than or equal to zero) the maximum number
+	 * For nonsensical input (less than zero) the maximum number
      * is left unchanged.	 
 	 *
 	 * @param the new maximum number of books per user (positive non-zero).
 	 */
-	List<User> setMaxBooksPolicy(int newMaxBooks);
+	List<User> setMaxBookPolicy(int newMaxBooks);
 	
 	/**
 	 * Adds a new book to the list of books in this library.

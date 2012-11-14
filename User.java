@@ -53,7 +53,7 @@ public class User {
 	 */
 	public void register(Library lib) {
 		this.lib = lib;
-		id = lib.getID(NAME);
+		id = lib.getID(this);
 	}
 	
 	/**

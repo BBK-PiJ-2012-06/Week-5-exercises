@@ -29,10 +29,10 @@ public class LibraryImp implements Library {
 	}
 	
 	@Override
-	public List<User> setMaxBooksPolicy(int new_max_bpu) {
-		if( new_max_bpu > 0 )
+	public List<User> setMaxBookPolicy(int new_max_bpu) {
+		if( new_max_bpu >= 0 )
 			maxBooksPerUser = new_max_bpu;
-		List<User> violatingUsers = new LinkedList<User>;
+		List<User> violatingUsers = new LinkedList<User>();
 		for(User testUser : userMap.keySet()) {
 			if(testUser.getBooksBorrowed().size() > maxBooksPerUser) {
 				violatingUsers.add(testUser);
@@ -74,6 +74,11 @@ public class LibraryImp implements Library {
 			System.out.println("User " + user.getName() + " is not registered!");
 			return null;
 		}
+		if(user.getBooksBorrowed().size() == maxBooksPerUser) {
+			System.out.println("User " + user.getName() + " already has borrowed the maximum allowed: cannot borrow more until one or more books are returned");
+			return null;
+		}
+		
 		List<Book> booksRequested = bookMap.get(title);
 		if(booksRequested == null) {
 			return null;
